@@ -1,0 +1,48 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type User {
+    id: Int!
+    name: String!
+    surname: String!
+    patronymic: String
+    age: Int
+    gender: String
+    nationality: String
+}
+
+type Query {
+    getUser(pagination: Pagination!, filters: UserFilter): [User]!
+}
+
+input UserInput {
+    id: Int
+    name: String!
+    surname: String!
+    patronymic: String
+    age: Int
+    gender: String
+    nationality: String
+}
+
+input UserFilter {
+    id: Int
+    name: String
+    surname: String
+    patronymic: String
+    age: Int
+    gender: String
+    nationality: String
+}
+
+input Pagination {
+    page: Int!
+    limit: Int!
+}
+
+type Mutation {
+    createUser(input: UserInput!): Int!
+    deleteUser(input: Int!): Int!
+    updateUser(id: Int!, params: UserFilter!): User!
+}
